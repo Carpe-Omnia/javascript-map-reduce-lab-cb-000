@@ -1,3 +1,29 @@
+var issuesWithUpdatedApiUrl = issues.map(function(issue){
+  var thing = issue ;
+  thing["url"] = issue["url"].replace('api.github.com', 'api-v2.github.com') ;
+  return thing
+})
+var commentCountAcrossIssues = 0;
+issues.forEach(function(issue){
+  commentCountAcrossIssues += issue.comments_count
+})
+var openIssues = issues.filter(function(issue){
+  return issue.state !== "closed"
+})
+var nonAutomaticIssues = issues.filter(function(issue){
+  return issue.body !== "This pull request has been automatically created by learn.co."
+})
+var table = document.getElementById('results');
+var stuff = nonAutomaticIssues.map(function(issue){
+  return (
+    `<tr>
+      <td>${issue.body}</td>
+      <td>${issue.created_at}</td>
+      <td>${issue.state}</td>
+    </tr>`
+  )
+})
+table.innerHTML = stuff
 const issues = [
   {
     "body": "Instructions say GET /team and POST /newteam. Rspec wants GET/newteam and POST/team.",
