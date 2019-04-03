@@ -7,6 +7,9 @@ var commentCountAcrossIssues = 0;
 issues.forEach(function(issue){
   commentCountAcrossIssues += issue.comments_count
 })
+var openIssues = issues.filter(function(issue){
+  return issue.state !== "closed"
+})
 const issues = [
   {
     "body": "Instructions say GET /team and POST /newteam. Rspec wants GET/newteam and POST/team.",
