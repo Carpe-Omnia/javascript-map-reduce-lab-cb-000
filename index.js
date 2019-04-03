@@ -3,7 +3,10 @@ var issuesWithUpdatedApiUrl = issues.map(function(issue){
   thing["url"] = issue["url"].replace('api.github.com', 'api-v2.github.com') ;
   return thing
 })
-
+var commentCountAcrossIssues = 0;
+issues.forEach(function(issue){
+  commentCountAcrossIssues += issue.comments_count
+})
 const issues = [
   {
     "body": "Instructions say GET /team and POST /newteam. Rspec wants GET/newteam and POST/team.",
