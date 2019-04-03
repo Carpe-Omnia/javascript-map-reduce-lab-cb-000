@@ -13,10 +13,10 @@ var openIssues = issues.filter(function(issue){
 var nonAutomaticIssues = issues.filter(function(issue){
   return issue.body !== "This pull request has been automatically created by learn.co."
 })
-var table = document.getElementById('results'); 
+var table = document.getElementById('results');
 var stuff = nonAutomaticIssues.map(function(issue){
   return (
-    `<tr> 
+    `<tr>
       <td>${issue.body}</td>
       <td>${issue.created_at}</td>
       <td>${issue.state}</td>
